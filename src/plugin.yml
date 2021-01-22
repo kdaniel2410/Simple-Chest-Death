@@ -1,0 +1,5 @@
+name: SimpleChestDeath
+version: 1
+author: kdaniel2410
+main: com.github.kdaniel2410.SimpleChestDeath
+api-version: 1.13

@@ -20,7 +20,7 @@ public class MyListener implements org.bukkit.event.Listener {
         }
         Block block = event.getEntity().getLocation().getBlock();
         block.setType(Material.CHEST);
-        deathChests.put(block, event.getEntity().getInventory().getContents());
+        deathChests.put(block, event.getDrops().toArray(new ItemStack[0]));
         event.getDrops().clear();
     }
 

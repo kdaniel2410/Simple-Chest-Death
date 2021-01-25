@@ -3,6 +3,8 @@ package com.github.kdaniel2410;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.BlockExplodeEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
@@ -37,6 +39,16 @@ public class MyListener implements org.bukkit.event.Listener {
         }
         deathChests.remove(event.getClickedBlock());
         event.getClickedBlock().setType(Material.AIR);
+    }
+
+    @EventHandler
+    public void onBlockExplode(BlockExplodeEvent event) {
+        event.blockList().removeIf(block -> deathChests.containsKey(block));
+    }
+
+    @EventHandler
+    public void onEntityExplode(EntityExplodeEvent event) {
+        event.blockList().removeIf(block -> deathChests.containsKey(block));
     }
 
     public boolean isInventoryEmpty(Inventory inventory) {
